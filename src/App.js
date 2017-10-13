@@ -12,7 +12,7 @@ class App extends Component {
           {/* <h1 className="App-title">Welcome to my Portfolio Website</h1> */}
         </header>
         <p className="App-intro">
-          Website In Progress......
+          Website In Progress ...... Rukawat k lie khed hai
           {/* To get started, edit <code>src/App.js</code> and save to reload. */}
         </p>
       </div>
