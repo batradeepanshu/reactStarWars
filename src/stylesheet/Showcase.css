@@ -1,0 +1,15 @@
+.showcaseWrapper{
+  background-color:orange;
+}
+.doosra{
+  background-color: blue;
+  height: 10rem;
+}
+
+.showcaseWrapper .name{
+  font-size: 5rem;
+  margin-bottom: .5rem;
+}
+.showcaseWrapper .caption{
+  font-size: 2rem;
+}

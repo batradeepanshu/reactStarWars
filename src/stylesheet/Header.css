@@ -1,0 +1,18 @@
+.header-wrapper{
+  height:6rem;
+  background-color: black;
+  color: white;
+}
+.header-wrapper ul{
+  margin: 0;
+  padding: 0;
+}
+ .header-wrapper ul li{
+   float: left;
+   display: inline-block;
+   font-size: 2rem;
+   padding: 0 2rem;
+   line-height: 6rem;
+   font-weight: 200;
+   /*padding: 0 1rem;*/
+ }
