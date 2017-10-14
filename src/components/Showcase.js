@@ -18,7 +18,7 @@ export default class Showcase extends Component{
       <div>
       <div className='showcaseWrapper' ref='showcase' style={showcaseHeight}>
           <div className='the-center vertically-center'>
-          <div className='name'>Deepanshu Batra</div>
+          <div className='name'>D B</div>
           <div className='caption'>Portfolio Website In progress...</div>
           </div>
       </div>
