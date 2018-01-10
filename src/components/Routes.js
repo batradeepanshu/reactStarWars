@@ -1,21 +1,45 @@
-import React, { Component } from 'react';
-import { BrowserRouter,Route,Switch,Redirect } from 'react-router-dom';
-import Login from './Login';
-import SearchPlanet from './SearchPlanet';
+import React, { Component } from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import {getCookie} from "../controllers/cookies";
+import Login from "./Login";
+import SearchPlanet from "./SearchPlanet";
 
-export default class Routes extends Component{
-  constructor(){
+export default class Routes extends Component {
+  constructor() {
     super();
+    this.set_logged_in_user = this.set_logged_in_user.bind(this);
+    this.state={
+      username:getCookie('star_username')
+    };
+  }
+  componentWillMount(){
+
   }
 
-  render(){
-    return(
-      <BrowserRouter>
-      <Switch>
+  set_logged_in_user(username) {
+    this.setState({
+      username
+    });
+  }
 
-      <Route path='/login' component={Login}/>
-      <Route path='/planet-search' component={SearchPlanet}/>
-      </Switch>
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route
+            path="/login"
+            render={() =>
+              <Login username={this.state.username} setUser={this.set_logged_in_user} />
+            }
+          />
+          <Route
+            path="/planets"
+            username={this.state.username}
+            render={() => <SearchPlanet username={this.state.username}
+              setUser={this.set_logged_in_user}
+            />}
+          />
+        </Switch>
       </BrowserRouter>
     );
   }
