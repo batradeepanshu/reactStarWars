@@ -4,17 +4,17 @@
   left:50%;
   top:50%;
   transform:translate(-50%,-50%);
-  border-radius: 1rem;
+  /*border-radius: 1rem;*/
 }
 
 .login-wrap .login-heading{
-  background-color: #894d4d;
+  background-color: #649387;
   color: white;
   padding: 1rem;
   text-align: center;
   font-size: 2rem;
   letter-spacing: .1rem;
-  border-radius: 1rem 1rem 0 0 ;
+  /*border-radius: 1rem 1rem 0 0 ;*/
 }
 .login-wrap .form{
   padding:5rem;
@@ -43,4 +43,9 @@
   color: black;
   text-align: center;
   cursor: pointer;
+}
+.home-btn{
+  background-color: orange;
+  color: white;
+  padding: 1rem;
 }

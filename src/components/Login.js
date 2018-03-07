@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { authenticate_user } from "../controllers/authentification";
 import {setCookie} from "../controllers/cookies";
 import { withRouter } from "react-router-dom";
+import {Link} from 'react-router-dom';
 import "../stylesheet/Login.css";
 
 class Login extends Component {
@@ -38,7 +39,7 @@ class Login extends Component {
             <input type="text" placeholder="Username" ref="user" />
             <input type="password" placeholder="Password" ref="password" />
             <div className="error">{this.state.error}</div>
-            {this.state.loader?<div>LOADING...</div>:
+            {this.state.loader?<div>LOGGING IN...</div>:
             (
               <div className="login-submit" onClick={this.log_in}>
                 LOGIN

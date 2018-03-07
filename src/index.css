@@ -6,8 +6,12 @@ html{
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #2e2d2d;
+  /*background-color: #d8e9f4;*/
+  background: url('https://www.wallpaperup.com/uploads/wallpapers/2014/04/12/330551/185c99304364bba58fe8bfe3765fcf64-700.jpg');
+  background-attachment: fixed;
   color: #d2cfcf;
+  font-family: 'Cantarell', sans-serif;
+
 }
 .clearfix::after {
   content: " ";

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import {getCookie} from "../controllers/cookies";
 import Login from "./Login";
+import Home from "./Home";
 import SearchPlanet from "./SearchPlanet";
 
 export default class Routes extends Component {
@@ -26,6 +27,12 @@ export default class Routes extends Component {
     return (
       <BrowserRouter>
         <Switch>
+          <Route
+            exact path="/"
+            render={() =>
+              <Home/>
+            }
+          />
           <Route
             path="/login"
             render={() =>

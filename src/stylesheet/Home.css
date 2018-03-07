@@ -1,0 +1,22 @@
+
+.home-wrapper{
+  padding: 2rem;
+}
+.head-home{
+  font-size: 4rem;
+  text-align: center;
+}
+
+.details-home{
+  font-size: 2rem;
+}
+.get-started-btn{
+  width: 3rem;
+  padding: 1rem;
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  margin-left: 3rem;
+}
