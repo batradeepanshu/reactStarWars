@@ -7,11 +7,10 @@ import "../stylesheet/SearchPlanet.css";
 class SearchPlanet extends Component {
   constructor() {
     super();
-    this.state = {};
-    this.render_planets_names = this.render_planets_names.bind(this);
-    this.render_planets_details=this.render_planets_details.bind(this);
-    this.fetch_planets_info = this.fetch_planets_info.bind(this);
-    this.filter_planets = this.filter_planets.bind(this);
+    this.state = {
+      page:1
+    };
+    // this.filter_planets = this.filter_planets.bind(this);
     this.logout=this.logout.bind(this);
     this.go_back=this.go_back.bind(this);
   }
@@ -28,20 +27,24 @@ class SearchPlanet extends Component {
     this.props.history.push('/login');
   }
 
-  fetch_planets_info() {
-    get_planets_details().then(resp => {
-      this.setState({ planetsInfo: resp });
+  fetch_planets_info(name,page) {
+      this.setState({fetching:true,page:page||this.state.page});
+    get_planets_details(name,page).then(resp => {
+      this.setState({fetching:false, planetsInfo: resp });
     });
   }
-  filter_planets(input) {
-    var filteredPlanets = [];
-    for (let i = 0; i < this.state.planetsInfo.length; i++) {
-      if (this.state.planetsInfo[i].name.toLowerCase().indexOf(input.toLowerCase()) != -1) {
-        filteredPlanets.push(this.state.planetsInfo[i]);
-      }
-    }
-    this.setState({ ...this.state, filteredPlanetsInfo: filteredPlanets });
-  }
+  // filter_planets(input) {
+  //   get_planets_details().then(resp=>{
+  //
+  //   });
+  //   // var filteredPlanets = [];
+  //   // for (let i = 0; i < this.state.planetsInfo.length; i++) {
+  //   //   if (this.state.planetsInfo[i].name.toLowerCase().indexOf(input.toLowerCase()) != -1) {
+  //   //     filteredPlanets.push(this.state.planetsInfo[i]);
+  //   //   }
+  //   // }
+  //   this.setState({ ...this.state, filteredPlanetsInfo: filteredPlanets });
+  // }
 
   render_planets_names() {
     var planetsInfo = this.state.filteredPlanetsInfo || this.state.planetsInfo;
@@ -85,19 +88,24 @@ class SearchPlanet extends Component {
   render() {
     if (this.state.planetsInfo) {
       return (
-
         <div className="planet-search-wrapper">
           <div className='log-out' onClick={this.logout}>LOGOUT</div>
           {!this.state.showdetail && <input
             type="text"
-            placeholder={'Filter Planets'}
-            onChange={myInput => {
-              this.filter_planets(myInput.target.value);
+            placeholder={'Search Planets'}
+            onKeyPress={myInput => {
+              if(myInput.key=='Enter')
+              this.fetch_planets_info(myInput.target.value);
             }}
           />}
+          {!this.state.showdetail && <div className='pagination-container clearfix'>
+            <div className='pagination First-page' onClick={()=>{this.fetch_planets_info(null,1)}}>1</div>
+            {this.state.page!=1 && <div className='pagination previous-page' onClick={()=>{this.fetch_planets_info(null,this.state.page-1)}}>Previous Page</div>}
+          <div className='pagination next-page' onClick={()=>{this.fetch_planets_info(null,this.state.page+1)}}>Next Page</div>
+          </div>}
 
           {(!this.state.showdetail && Boolean(this.state.planetsInfo || this.state.filteredPlanetsInfo))?
-            this.render_planets_names():
+            !this.state.fetching ? this.render_planets_names():'fetching planets ...':
             this.render_planets_details()}
         </div>
       );
